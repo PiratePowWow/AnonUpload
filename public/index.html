@@ -7,6 +7,8 @@
 <body>
 <form action="/upload" enctype="multipart/form-data" method="post">
     <input type="file" name="file"/>
+    <input type="text" name="comment" placeholder="Enter A New File Name">
+    <input type="checkbox" value="TRUE" name="isPerm" placeholder="Would You Like To Make This File Permanent?">
     <button type="submit">Upload</button>
 </form>
 <div id="fileList"></div>
