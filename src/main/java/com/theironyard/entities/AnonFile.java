@@ -16,13 +16,12 @@ public class AnonFile {
     @Column(nullable = false)
     String originalFilename;
 
-    public AnonFile(int id, String filename, String originalFilename) {
-        this.id = id;
+    public AnonFile(String filename, String originalFilename) {
         this.filename = filename;
         this.originalFilename = originalFilename;
     }
 
-    public AnonFile(String name, String originalFilename) {
+    public AnonFile() {
     }
 
     public int getId() {
