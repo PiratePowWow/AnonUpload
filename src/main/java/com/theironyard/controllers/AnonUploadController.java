@@ -42,15 +42,12 @@ public class AnonUploadController {
 
     @RequestMapping(path = "/upload", method = RequestMethod.POST)
     public void upload(MultipartFile file, HttpServletResponse response, Boolean isPerm, String comment) throws IOException {
-        if(isPerm==null){
-            isPerm = false;
-        }
         File dir = new File("public/files");
         dir.mkdirs();
         File f = File.createTempFile("file", file.getOriginalFilename(), dir);
         FileOutputStream fos = new FileOutputStream(f);
         fos.write(file.getBytes());
-        AnonFile anonFile = new AnonFile(f.getName(), file.getOriginalFilename(), isPerm, Timestamp.valueOf(LocalDateTime.now()), comment);
+        AnonFile anonFile = new AnonFile(f.getName(), file.getOriginalFilename(), (isPerm==null?false:isPerm), Timestamp.valueOf(LocalDateTime.now()), comment);
         files.save(anonFile);
         response.sendRedirect("/");
     }
